@@ -1,0 +1,23 @@
+.newsListItem {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.news__date {
+    color: #6C7072;
+    font-weight: 400;
+    margin-top: 8px;
+}
+
+.news__title{
+    margin-top: 12px;
+}
+
+.newsListItem_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+}

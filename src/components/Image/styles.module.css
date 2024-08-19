@@ -1,0 +1,20 @@
+
+.img__wraper {
+    height: 64px;
+    width: 64px;
+    position: relative;
+    background-color: gray;
+
+}
+
+.img__wraper_banner {
+    width: 100%;
+    min-height: 195px;
+    max-width: 350px;
+    max-height: 195px;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+}
