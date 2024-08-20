@@ -1,0 +1,27 @@
+
+.breaking {
+    padding: 13px 20%;
+    width: 80%;
+    margin: 40px auto;
+    height: 80px;
+    background-color: #C31815;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+
+    &_logo {
+        color: #C31815;
+        background-color: #fff;
+        padding: 16px 20px;
+        border-radius: 2px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &_title {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 500px;
+    }
+}

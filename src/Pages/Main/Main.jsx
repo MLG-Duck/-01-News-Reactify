@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import Header from "../../components/Header/Header";
-import NewsBanner from "../../components/NewsBanner/NewsBanner";
-import NewsListItem from "../../components/NewsListItem/NewsListItem";
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 import { getNews } from "../../api/apiNews";
-import NewsList from "../../components/NewsList/NewsList";
+import BreakingNews from "../../components/BreakingNews/BreakingNews";
+import LiveTranslation from "../../components/LiveTranslation/LiveTranslation";
+import NewsBlock from "../../components/NewsBlock/NewsBlock";
 
 const Main = () => {
     const [news, setNews] = useState([])
@@ -21,11 +21,14 @@ const Main = () => {
         fetchNews();
     },[])
     return(
-        <div className={styles.main__container}>
+        <div className={styles.main}>
             <Header />
-            
-            {news.length > 0 && <NewsBanner item={news[0]}/>}
-            {news.length > 0 && <NewsList items={news.slice(1)}/>}
+            <BreakingNews />
+            <div className={styles.contentBlocks}>
+                <NewsBlock item={news}/>
+                <LiveTranslation />
+            </div>
+
         </div>
     );
 }
