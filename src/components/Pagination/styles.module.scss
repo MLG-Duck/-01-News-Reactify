@@ -1,0 +1,58 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 20px;
+
+    &_item {
+        cursor: pointer;
+        font-size: 18;
+        font-family: 'Inter', 'Open Sans';
+        font-weight: 800;
+        height: 32px;
+        width: 32px;
+        border-radius: 6px;
+        background-color: #fff;
+        color: rgb(195, 24, 21);
+        border: 1px rgb(195, 24, 21) solid;
+
+        &__active {
+            background-color: rgb(195, 24, 21);
+            border:white;
+            color: white;
+        }
+
+        &__inactive {
+            border: 1px rgb(195, 24, 21, 0.15) solid;
+            color: rgb(195, 24, 21, 0.15);
+            font-size: 18;
+            font-family: 'Inter', 'Open Sans';
+            font-weight: 800;
+            height: 32px;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        &__arrow {
+            cursor: pointer;
+            font-size: 18;
+            font-family: 'Inter', 'Open Sans';
+            font-weight: 800;
+            height: 32px;
+            width: 32px;
+            border-radius: 6px;
+            background-color: #fff;
+            color: rgb(195, 24, 21); 
+            border: 1px rgb(195, 24, 21, 0.15) solid;
+        }
+    }
+    
+}
+
+.flex_container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

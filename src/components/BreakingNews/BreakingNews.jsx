@@ -5,7 +5,6 @@ import { formatTimeAgo} from "../../helpers/formatTimeAgo";
 
 
 const BreakingNews = ({ item }) => {
-    console.log(item)
     return(
         <>
         <div className={styles.breaking}>

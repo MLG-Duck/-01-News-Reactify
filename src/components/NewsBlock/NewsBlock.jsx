@@ -5,7 +5,6 @@ import styles from './styles.module.scss'
 
 
 const NewsBlock = ({ item }) => {
-    console.log(item)
     return(
         <div className={styles.newsBlock}>
             <div className={styles.newsBlock_categories}>
