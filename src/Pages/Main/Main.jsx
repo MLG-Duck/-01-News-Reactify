@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Header from "../../components/Header/Header";
 import styles from './styles.module.scss'
-import { getNews } from "../../api/apiNews";
+import { getNews, getCategories } from "../../api/apiNews";
 import BreakingNews from "../../components/BreakingNews/BreakingNews";
 import LiveTranslation from "../../components/LiveTranslation/LiveTranslation";
 import NewsBlock from "../../components/NewsBlock/NewsBlock";
@@ -10,6 +10,7 @@ import Pagination from "../../components/Pagination/Pagination";
 
 const Main = () => {
     const [news, setNews] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 7;
     const pageSize = 10;
@@ -26,6 +27,21 @@ const Main = () => {
         };
         fetchNews();
     },[currentPage]);
+
+    const fetchCategories = async() => {
+        try {
+            const response = await getCategories();
+            setCategories(["All", ...response.categories])
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchCategories();
+    },[]);
+
+    console.log(categories)
 
     const handleNextPage = () => {
         if (currentPage < limitPages) {
