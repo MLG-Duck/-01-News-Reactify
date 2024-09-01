@@ -11,22 +11,25 @@ import Pagination from "../../components/Pagination/Pagination";
 const Main = () => {
     const [news, setNews] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 7;
     const pageSize = 10;
     const limitPages = 30;
 
-    useEffect(() => {
-        const fetchNews = async() => {
-            try {
-                const response = await getNews(currentPage, pageSize, limitPages);
-                setNews(response.news)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchNews();
-    },[currentPage]);
+    const fetchNews = async() => {
+        try {
+            const response = await getNews({
+                page_number: currentPage,
+                page_size: pageSize,
+                limit: limitPages,
+                category: category === 'All' ? null : category,
+                });
+            setNews(response.news)
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const fetchCategories = async() => {
         try {
@@ -38,10 +41,13 @@ const Main = () => {
     }
 
     useEffect(() => {
+
+        fetchNews();
+    },[currentPage, category]);
+
+    useEffect(() => {
         fetchCategories();
     },[]);
-
-    console.log(categories)
 
     const handleNextPage = () => {
         if (currentPage < limitPages) {
@@ -59,6 +65,11 @@ const Main = () => {
         setCurrentPage(pageNumber);
     }
 
+    const handleCategoryClick = (category) => {
+        setCategory(category);
+        console.log(category);
+    }
+
     return(
         <div className={styles.main}>
             <Header />
@@ -72,7 +83,7 @@ const Main = () => {
                 limitPages={limitPages}
             />
             <div className={styles.contentBlocks}>
-                <NewsBlock item={news}/>
+                <NewsBlock item={news} categories={categories} handleCategoryClick={handleCategoryClick}/>
                 <LiveTranslation />
             </div>
 

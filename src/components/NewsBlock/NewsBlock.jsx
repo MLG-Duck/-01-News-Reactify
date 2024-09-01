@@ -4,13 +4,17 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import styles from './styles.module.scss'
 
 
-const NewsBlock = ({ item }) => {
+const NewsBlock = ({ item, categories, handleCategoryClick }) => {
     return(
         <div className={styles.newsBlock}>
             <div className={styles.newsBlock_categories}>
-                <button className={styles.newsBlock_categories__item}>Latest news</button>
-                <button className={styles.newsBlock_categories__item}>Sport</button>
-                <button className={styles.newsBlock_categories__item}>Cats</button>
+                {categories.map((category) => <button 
+                        className={styles.newsBlock_categories__item} 
+                        key={category}
+                        onClick={() => handleCategoryClick(category)}
+                    
+                    >{category}</button>
+                )}
             </div>
             <div className={styles.newsBlock_newsCardsList}>
                 <NewsCardList item={item}/>
